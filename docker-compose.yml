@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+    home-cups:
+        container_name: home-cups
+        hostname: home-cups
+        image: hefish/alpine-cups:1.0
+        network_mode: host
+        ports:
+            - 631:631
+        restart: always
+        volumes:
+            - /home/hefish/works/home-cups/conf:/etc/cups
+            - /home/hefish/works/home-cups/log:/var/log/cups
+        environment:
+            - ROOT_PASS=rootpassword
+        logging:
+            options:
+                max-size: 1m
+
+        
